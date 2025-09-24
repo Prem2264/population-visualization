@@ -1,19 +1,25 @@
-import pandas as pd
 import matplotlib.pyplot as plt
+import numpy as np
 
-data = {
-    'Country': ['India', 'China', 'USA', 'Indonesia', 'Pakistan', 'Brazil', 'Nigeria', 'Bangladesh', 'Russia', 'Mexico'],
-    'Population (2022)': [1407563842, 1425887337, 332403650, 279134505, 235824862, 214326223, 216746934, 169828911, 144713314, 126705138]
-}
+# Example dataset
+ages = [23, 25, 31, 45, 22, 36, 41, 52, 33, 27, 29, 30, 35, 40, 50, 60, 21, 22, 23, 24]
+genders = ["Male", "Female", "Male", "Male", "Female", "Female", "Male", "Female",
+           "Male", "Male", "Female", "Female", "Male", "Male", "Female", "Male",
+           "Female", "Male", "Female", "Male"]
 
-df = pd.DataFrame(data)
-df = df.sort_values('Population (2022)', ascending=False)
+# Histogram for ages
+plt.figure(figsize=(8, 5))
+plt.hist(ages, bins=8, edgecolor='black')
+plt.title('Age Distribution in Population')
+plt.xlabel('Age')
+plt.ylabel('Frequency')
+plt.show()
 
-plt.figure(figsize=(12, 6))
-plt.bar(df['Country'], df['Population (2022)'], color='skyblue')
-plt.title('Top 10 Countries by Population (2022)', fontsize=16)
-plt.xlabel('Country')
-plt.ylabel('Population')
-plt.xticks(rotation=45)
-plt.tight_layout()
+# Bar chart for gender distribution
+plt.figure(figsize=(6, 4))
+unique_genders, counts = np.unique(genders, return_counts=True)
+plt.bar(unique_genders, counts, color=['blue', 'pink'])
+plt.title('Gender Distribution in Population')
+plt.xlabel('Gender')
+plt.ylabel('Count')
 plt.show()
